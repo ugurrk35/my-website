@@ -46,6 +46,7 @@ export default function Home(): ReactNode {
     <Layout
       title={siteConfig.title}
       description={siteConfig.tagline}
+    
     >
       {/* Sayfa bazlı meta tag */}
       <Head>
