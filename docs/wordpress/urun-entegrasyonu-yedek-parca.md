@@ -1,13 +1,11 @@
----
-title: "Ürün Entegrasyonu (Bağlı Yedek parça )"
----
+# Ürün Entegrasyonu (Bağlı Yedek parça )
 
-Licrus’da, ürün bilgileri doğrudan tanımlamak ve kullanmak mümkündür. Aynı zamanda ürünlerin bir ERP/MRP sisteminde alınması isteniyorsa ilgili sistem tarafından Licrus’u aşağıdaki entegrasyon metodları kullanılarak veri aktarımı yapmak mümkündür. Ürün entegrasyon işlemlerinde Product nesnesi kullanılır. [Product](http://docs.onerov.com/urun-nesneleri) nesnesinin detayları için **[Veri Modeli](http://docs.onerov.com/category/veri-modeli/)** başlığına bakınız.
+Licrus'da, ürün bilgileri doğrudan tanımlamak ve kullanmak mümkündür. Aynı zamanda ürünlerin bir ERP/MRP sisteminde alınması isteniyorsa ilgili sistem tarafından Licrus'u aşağıdaki entegrasyon metodları kullanılarak veri aktarımı yapmak mümkündür. Ürün entegrasyon işlemlerinde Product nesnesi kullanılır. [Product](http://docs.onerov.com/urun-nesneleri) nesnesinin detayları için **[Veri Modeli](http://docs.onerov.com/category/veri-modeli/)** başlığına bakınız.
 
-**Ürün (Product)**
+## Ürün (Product)
 
 | Alan | Açıklama | Değer |
-| --- | --- | --- |
+|------|------|------|
 | Code | Ürün Kodu | Zorunlu |
 | Name | Ürün Adı | Zorunlu |
 | Description | Ürün hakkında bir açıklayıcı bilgiler içeren metin | Zorunlu |
@@ -23,10 +21,10 @@ Licrus’da, ürün bilgileri doğrudan tanımlamak ve kullanmak mümkündür. A
 | Origin | Cihazın menşeei;Bilinmiyor=0İthal=1Yerli=2 | Opsiyonel |
 | SpareParts | Ürüne bağlı yedek parça nesnesi |  |
 
-**Ürün bağlı yedek parça**
+## Ürün bağlı yedek parça
 
 | Code | Yedek Parça Kodu | Zorunlu |
-| --- | --- | --- |
+|------|------|------|
 | Name | Yedek Parça Adı | Zorunlu |
 | Description | Yedek Parça hakkında açıklama alanı. | Zorunlu |
 | Mainpartgroupcode | Yedek parça ana grup kodu | Zorunlu |
@@ -36,68 +34,217 @@ Licrus’da, ürün bilgileri doğrudan tanımlamak ve kullanmak mümkündür. A
 | WarrantyPeriod | Yedek parça için üretici tarafından verilen garanti süresi (yıl) | Opsiyonel |
 | AvailabletoOrder | Yedek parçanın siparişte kullanılıp kullanılmayacağını elirtir(true/false) | Zorunlu |
 | AllowUseİnServiceForm | Yedek parçanın hizmet formlarında kullanıp kulllanılmyacağını belirtir (true/false) | Zorunlu |
-| IsGivingBack | Yedek parçanın iade ye açıkmı  (true/false) | Zorunlu |
+| IsGivingBack | Yedek parçanın iade ye açıkmı(true/false) | Zorunlu |
 | UnitOfMesureCode | Ölçü birimi (örnek Adet kodu => ADT ) |  |
 | MinRequestQuantity | Siparişte kalem bazında istenecek minum adet.Örnek-1: MinOrderCount=5, MinRequestQuantity=5 sepete her ekleme yapıldığında 5 ve katları şeklinde olacaktır.Örnek-2: MinOrderCount=4, MinRequestQuantity=2 sepete her ekleme yapıldığında 2 ve katları şeklinde olacaktır ve en az 4 adet sipariş edilmek zorundadır. | Opsiyonel |
 | MinOrderCount | Minimum sipariş sayısı | Opsiyonel |
 
-**Custom Alanlar**
+## Custom Alanlar
 
 | KW | KW | İsteğe Bağlı |
-| --- | --- | --- |
+|------|------|------|
 | StageCount | Kademe sayısı | İsteğe Bağlı |
 | ElectricPumpCount | Elektrikli pompa sayısı | İsteğe Bağlı |
 | DieselPumpCount | Dizel pompa sayısı | İsteğe Bağlı |
 | PumpCount | Pompa Sayısı | İsteğe Bağlı |
 | ConfigurationContent | Konfigurasyon İçeriği | İsteğe Bağlı |
 | Genio |  | İsteğe Bağlı |
-
-  
 **Yeni Ürün Kaydetmek veya Ürün Güncellemek**  
-Aşağıdaki fonksiyonu kullanarak yeni bir ürün bilgisini Licrus’a aktara bilir veya Code alanıyla eşleşen mevcut bir ürünün bilgilerini güncelleyebilirsiniz.
+Aşağıdaki fonksiyonu kullanarak yeni bir ürün bilgisini Licrus'a aktara bilir veya Code alanıyla eşleşen mevcut bir ürünün bilgilerini güncelleyebilirsiniz.
 
-**Servis Nesneleri**
+## Servis Nesneleri
 
 Servis üzerinden yayınlanan tüm metotlar, Request nesnesi alır ve Response nesnesi döner. Request ve Response nesneleri kullanıldığı metoda özgü alanlar içermekle birlikte ortak bazı alanlar da içerirler;
 
-**Request (İstek)**
+## Request (İstek)
 
 | Alan | Açıklama | Değer |
-| --- | --- | --- |
+|------|------|------|
 | AuthTicket | Kimlik doğrulaması için kullanılacak ticket | Zorunlu |
 | Filter | Bu, sorguyu daraltmak için kullanılan bir dizi filtre içeren bir nesne özelliğidir. Bu durumda, “Code” adlı bir özelliğe sahiptir. | Zorunlu |
 | Code | “Filter” nesnesi altında bir özelliktir. Ürünle ilgili bilgileri almak için kullanılmaktadır | Zorunlu değildir.Verilmediği takdirde tüm ürünleri getirir. |
 
-**Response (Cevap)**
+## Response (Cevap)
 
 | Alan | Açıklama |
-| --- | --- |
+|------|------|
 | HasError | İşlem sonucunda bir hata oluştuysa true değer döner. Yapılan işlem başarılıysa false değer alır. |
 | HasMessage | İşlem sonucunda paylaşılan bir bilgi mesajı varsa true değer verir. |
 | MessageList | HasError veya HasMessage alanlarından herhangi bir true ise hata veya bilgi mesajı buradan alınabilir. |
-
 **Response.MessageList**  
 Mesaj nesnesini barındıran listedir ve içerisinde yer alan Message nesnesinin detayları aşağıdaki gibidir.
 
 | Alan | Açıklama |
-| --- | --- |
+|------|------|
 | Message | Hata veya Bilgi mesajı metin olarak buradan alınabilir. |
-| Url | https://simpleweburl.com/api/ERP/GetProduct    // SaveProduct |
+| Url | https://simpleweburl.com/api/ERP/GetProduct // SaveProduct |
 | Type | Servis tarafından gönderilen mesajın tipini verir. ServiceResponseMessageType tipinde bir enum değeri taşır. Bu alan 3 tip değer alabilir, bunlar;Error: HataInfo: BilgiWarning: Uyarı |
 
-**SaveProduct JSON Request Modeli**
+## SaveProduct JSON Request Modeli
 
-\`\`\`text { "authticket": "demodemodemodemodemo", "entity": { "code": "TESTCOD8", "name": "testtUrun8", "manufacturercode": "001", "productdetailgroupcode": "14064", "description": "test ürün", "isactive": true, "brand": { "code": "masdaf" }, "model": { "code": "1084" }, "maingroup": { "code": "G0014" }, "warrantyperiod": 3, "serialnumbercount": 1, "origin": 2, "Kw": 1, "StageCount": 2, "Genio": 3, "ElectricPumpCount": 1, "DieselPumpCount": 2, "PumpCount": 3, "ConfigurationContent": "test" "CreateMissingPart":true, "SpareParts": \[ { "code": "11testm-3", "description": "11testm-3", "partgroupcode": "G004", "isactive": true, "name": "test999m-2", "availabletoorder": true, "ManufacturerCode": "001", "isgivingback": false, "allowuseinserviceform": true, "minordercount": 5, "minrequestquantity": 5, "unitofmesurecode": "ADT" }, { "code": "232test", "description": "232test", "mainpartgroupcode": "G005", "partgroupcode": "5025", "isactive": true, "name": "test999m-2", "availabletoorder": true, "ManufacturerCode": "001", "isgivingback": false, "allowuseinserviceform": true, "minordercount": 5, "minrequestquantity": 5, "unitofmesurecode": "ADT" } \] } } \`\`\`
+```json
+{"authticket": "demodemodemodemodemo",
+	"entity":{
+	"code": "TESTCOD8",
+	"name": "testtUrun8",
+	"manufacturercode": "001",
+	"productdetailgroupcode": "14064",
+	"description": "test ürün",
+	"isactive": true,
+	"brand":{
+	"code": "masdaf"
+},
+	"model":{
+	"code": "1084"
+},
+	"maingroup":{
+	"code": "G0014"
+},
+	"warrantyperiod": 3,
+	"serialnumbercount": 1,
+	"origin": 2,
+	"Kw": 1,
+	"StageCount": 2,
+	"Genio": 3,
+	"ElectricPumpCount": 1,
+	"DieselPumpCount": 2,
+	"PumpCount": 3,
+	"ConfigurationContent": "test" "CreateMissingPart":true,
+	"SpareParts": [
+		{
+	"code": "11testm-3",
+	"description": "11testm-3",
+	"partgroupcode": "G004",
+	"isactive": true,
+	"name": "test999m-2",
+	"availabletoorder": true,
+	"ManufacturerCode": "001",
+	"isgivingback": false,
+	"allowuseinserviceform": true,
+	"minordercount": 5,
+	"minrequestquantity": 5,
+	"unitofmesurecode": "ADT"
+},
+	{
+	"code": "232test",
+	"description": "232test",
+	"mainpartgroupcode": "G005",
+	"partgroupcode": "5025",
+	"isactive": true,
+	"name": "test999m-2",
+	"availabletoorder": true,
+	"ManufacturerCode": "001",
+	"isgivingback": false,
+	"allowuseinserviceform": true,
+	"minordercount": 5,
+	"minrequestquantity": 5,
+	"unitofmesurecode": "ADT"
+}\
+	]
+}
+}
+```
 
-  
-**SaveProduct JSON response Modeli**
+## SaveProduct JSON response Modeli
+```json
+{"Results": [
+		\
+	],
+	"MessageList": [
+		{
+	"Type": 0,
+	"Message": "INT-PRD1001:TESTCOD8 Kodlu ürün aktif bir ürün olduğu için,
+	Licrus ürün bilgileri güncellenmedi."
+},
+	{
+	"Type": 2,
+	"Message": "11testm-3 kodlu yedek parça kaydedildi."
+},
+	{
+	"Type": 2,
+	"Message": "TESTCOD8 ürününe 11testm-3 kodlu yedek parça eklendi."
+},
+	{
+	"Type": 2,
+	"Message": "232test kodlu yedek parça kaydedildi."
+},
+	{
+	"Type": 2,
+	"Message": "TESTCOD8 ürününe 232test kodlu yedek parça eklendi."
+}\
+	],
+	"HasError": true,
+	"HasMessage": true
+}
+```
 
-\`\`\`json { "Results": \[\], "MessageList": \[ { "Type": 0, "Message": "INT-PRD1001:TESTCOD8 Kodlu ürün aktif bir ürün olduğu için, Licrus ürün bilgileri güncellenmedi." }, { "Type": 2, "Message": "11testm-3 kodlu yedek parça kaydedildi." }, { "Type": 2, "Message": "TESTCOD8 ürününe 11testm-3 kodlu yedek parça eklendi." }, { "Type": 2, "Message": "232test kodlu yedek parça kaydedildi." }, { "Type": 2, "Message": "TESTCOD8 ürününe 232test kodlu yedek parça eklendi." } \], "HasError": true, "HasMessage": true } \`\`\`
+## GetProduct JSON Request Modeli
 
-**GetProduct JSON Request Modeli**
+```json
+{
+	"AuthTicket": "demodemodemodemodemodemodemodemo",
+	"Filter": {
+		"Code": "PRODUCT-001"
+	}
+}
+```
+**GetProduct** **Response Modeli**
 
-\`\`\`json { "AuthTicket": "demodemodemodemodemodemodemodemo", "Filter": { "Code": "PRODUCT-001" } } \`\`\`
-
- **GetProduct** **Response Modeli**
-
-\`\`\`json { "Results": \[ { "Code": "PRODUCT-001", "Name": "demo ürün", "MainGroup": { "Code": "A.B1", "Name": "YOĞUŞMALI KOMBİ", "IsMainGroup": false, "UseInQuote": false, "ParentGroup": null, "CssStyle": null, "CssClass": null, "PreviewImageUrl": null, "DisplayOrder": null, "SubGroups": null, "IsTrackVersion": false, "Id": 0, "IsActive": false, "Text": null }, "Point": 0, "Brand": { "Code": "Marka", "Name": "Marka", "Id": 0, "IsActive": false, "Text": null }, "Model": { "Code": "8406450010", "Name": "Demo", "Id": 0, "IsActive": false, "Text": null }, "Manufacturer": null, "Price": 0, "Currency": null, "PreviewImage": null, "Description": "demo ürün bilgisi", "Images": null, "WarrantyPeriod": 3, "SerialNumberCount": 1, "Width": 0, "Height": 0, "Id": 0, "IsActive": false, "Text": null } \], "MessageList": \[\], "HasError": false, "HasMessage": false } \`\`\`
+```json
+{"Results": [
+		{
+	"Code": "PRODUCT-001",
+	"Name": "demo ürün",
+	"MainGroup":{
+	"Code": "A.B1",
+	"Name": "YOĞUŞMALI KOMBİ",
+	"IsMainGroup": false,
+	"UseInQuote": false,
+	"ParentGroup": null,
+	"CssStyle": null,
+	"CssClass": null,
+	"PreviewImageUrl": null,
+	"DisplayOrder": null,
+	"SubGroups": null,
+	"IsTrackVersion": false,
+	"Id": 0,
+	"IsActive": false,
+	"Text": null
+},
+	"Point": 0.0,
+	"Brand":{
+	"Code": "Marka",
+	"Name": "Marka",
+	"Id": 0,
+	"IsActive": false,
+	"Text": null
+},
+	"Model":{
+	"Code": "8406450010",
+	"Name": "Demo",
+	"Id": 0,
+	"IsActive": false,
+	"Text": null
+},
+	"Manufacturer": null,
+	"Price": 0.0,
+	"Currency": null,
+	"PreviewImage": null,
+	"Description": "demo ürün bilgisi",
+	"Images": null,
+	"WarrantyPeriod": 3,
+	"SerialNumberCount": 1,
+	"Width": 0.0,
+	"Height": 0.0,
+	"Id": 0,
+	"IsActive": false,
+	"Text": null
+}\
+	],
+	"MessageList": [
+		\
+	],
+	"HasError": false,
+	"HasMessage": false
+}
+```
