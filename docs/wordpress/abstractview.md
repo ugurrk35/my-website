@@ -1,0 +1,125 @@
+---
+title: "AbstractView"
+---
+
+&lt;p&gt;[[&lt;em&gt;TOC&lt;/em&gt;]]&lt;/p&gt;
+&lt;h1&gt;AbstractView&lt;/h1&gt;
+&lt;p&gt;Uygulama arayüzlerinde geliştirme yaparken bu sınıf kullanılmaz. Eğer yeni bir BaseView eklemek isterseniz bu sınıftan türetmelisiniz. Bunun dışında uygulama ekranları için doğrudan bu AbstractView&#8217;dan katılım almayınız.&lt;/p&gt;
+&lt;p&gt;AbstractView içerisinde bir çok uygulama fonksiyonuna hızlıca erişebilrsiniz. Bunlar aynı zamanda diğer BaseView&#8217;larda da kullanılır çünkü tüm BaseView&#8217;lar AbstractView&#8217;dan kalıtım almıştır.&lt;/p&gt;
+&lt;h2&gt;Yapıcı Metod (constructor)&lt;/h2&gt;
+&lt;p&gt;Bir view AbstractView&#8217;dan türetilecekse mutlaka ViewParameter değeri sağlanmalıdır. Parametresiz Constructor&#8217;ı bulunmamaktadır.&lt;br /&gt;
+ViewParameter nesnesi için yeni view oluşturma başlığına bakınız.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;constructor(public view: ViewParameter)&lt;/code&gt;&lt;/pre&gt;
+&lt;h2&gt;Functions&lt;/h2&gt;
+&lt;h3&gt;Giriş Noktası&lt;/h3&gt;
+&lt;p&gt;Bir view yüklendikten ilk önce onInit metodu çağrılır. Her view&#8217;da olmak zorundadır boş bırakılabilir ama eklenmek zorundadır.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;abstract onInit();&lt;/code&gt;&lt;/pre&gt;
+&lt;h3&gt;Değişen Alanların Kontrolü&lt;/h3&gt;
+&lt;p&gt;Kullanıcı sayfadan çıkmadan giriş yaptığı alanlarda değişik olup olmadığını anlamak için bu fonksiyon kullanılır.&lt;br /&gt;
+Herhangi bir içerik değiştirilmişse &lt;strong&gt;true&lt;/strong&gt; diğer durumda &lt;strong&gt;false&lt;/strong&gt; değer verir.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;isDirty(): boolean;&lt;/code&gt;&lt;/pre&gt;
+&lt;h3&gt;Sayfa Başlığını Değiştirme&lt;/h3&gt;
+&lt;p&gt;Sayfa başlığını değiştirmek için setTitle metodunu kullanılır.&lt;br /&gt;
+Bu metod içerisine verilen string değer için kullanıcı dil paketinde karşılığı aranır. Değer atamadan önce translate yapmak gerekmez.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;setTitle(title: string);&lt;/code&gt;&lt;/pre&gt;
+&lt;h3&gt;Kullanıcı Dilinde Gösterme&lt;/h3&gt;
+&lt;p&gt;Culture bilgisi üzerinden verilen ifadeyi geçerli dilde göstermeyi dener. Eğer ifadenin aktif dilde bir kaşlığı yoksa olduğu gibi gösterilir.&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;public tryTranslate(value: string): string ;&lt;/code&gt;&lt;/p&gt;
+&lt;h3&gt;Farklı Bir View&#8217;a Yönlendirme Yapmak&lt;/h3&gt;
+&lt;p&gt;Bir View içerisinden farklı bir View&#8217;a gidebilir veya yönlendirme yapabilirsiniz. Bunun için AbstractView altında yer alan Go metodunu kullanırsınız.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;go(route: string, data: any);&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Çağrı listesine gitmek için index view için aşağıdaki Route(yönlendirme)  yeterlidir.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;this.go("modules/call/index");&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;servis katmanında gelen bir ürünün bilgilerini göstermek için;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;var product = &#123;...&#125;;
+this.go("modules/productmanager/product/form",product);&lt;/code&gt;&lt;/pre&gt;
+&lt;h3&gt;Componenet ve View Yüklemek&lt;/h3&gt;
+&lt;p&gt;Bu Metod ile bir view içerisinde istenen bölüme farklı bir view veya component yükleyebilirsiniz. Örneğin;&lt;br /&gt;
+kullanıcının seçtiği bir Dropwdown listesinin değerine göre farklı component&#8217;ler yüklenmek istendiğinde bu metod kullanılır.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;public loadView(route: string, target: string, data: any = null, instanceVariable: string = null) ;&lt;/code&gt;&lt;/pre&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Parametre&lt;/th&gt;
+&lt;th&gt;Tip&lt;/th&gt;
+&lt;th&gt;Değer&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;route&lt;/td&gt;
+&lt;td&gt;string&lt;/td&gt;
+&lt;td&gt;Component veya View&#8217;ın alınacağı route&#8217;tur. Diğer bir deyişle html/ts dosyasının yoludur. Dosya uzantısı kullanılmaz.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;target&lt;/td&gt;
+&lt;td&gt;string&lt;/td&gt;
+&lt;td&gt;Component veya View&#8217;ın yükleneceği container&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;data&lt;/td&gt;
+&lt;td&gt;any&lt;/td&gt;
+&lt;td&gt;Component veya View yüklendiği sırada render veya bind edilmek istenen json veri nesnesi&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;instanceVariable&lt;/td&gt;
+&lt;td&gt;string&lt;/td&gt;
+&lt;td&gt;Değer verilmediğinde varsayılan olarak, View&#8217;lar için kullanılan varsayılan değişken adı olan _co değerini alır.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;pre&gt;&lt;code&gt;/**
+ * this.model verisinde yer alan bilgilere göre görüntülenme modunu belirler.
+ * @returns
+ */&lt;/code&gt;&lt;/pre&gt;
+&lt;h3&gt;UI Mode&lt;/h3&gt;
+&lt;p&gt;Arayüzler çağrılma yöntemine göre farklı durumlar alabilir. Örneğin bir kaydı güncellemek için ekran açıldığında View , Edit durumunu alır.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;public getUIMode(): ViewMode&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;ViewMode değerleri.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;enum ViewMode &#123;
+    Insert = 0,
+    Edit = 1,
+    Readonly = 2,
+&#125;&lt;/code&gt;&lt;/pre&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;ViewMode&lt;/th&gt;
+&lt;th&gt;Koşul&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;Insert&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;this.model == null || this.model.Id == null || this.model.Id == 0&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Edit&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;this.model != null && this.model.Id &gt; 0&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Readonly&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;this.model != null && this.model.Id &gt; 0&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h3&gt;UI Tags&lt;/h3&gt;
+&lt;p&gt;WebApi katamanından gelen nesnede yer alan DataTypeUIInfo tipinde veriyi, UI katmanında kullanılabilecek hale (html) dönüştürür.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;protected convertToUITag(data: IDataTypeUIInfo);&lt;/code&gt;&lt;/pre&gt;
+&lt;h2&gt;Field and Members&lt;/h2&gt;
+&lt;h3&gt;model&lt;/h3&gt;
+&lt;p&gt;View&#8217;da kullanılacak olan ve View yüklenirken gönderilen JSON formatında veri nesnesidir.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;public model:any;&lt;/code&gt;&lt;/pre&gt;
+&lt;h3&gt;UI Yardımcısı&lt;/h3&gt;
+&lt;p&gt;Arayüzle ilgili yardımcı metodlar için hızlı erişim noktasıdır. Örneğin modal nesnesini göstermek, Yükleniyor mesajını göstermek veya gizlemek vb. Daha detaylı bilgi için LicrusUIHelper başlığına bakınız.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;ui: LicrusUIHelper;&lt;/code&gt;&lt;/pre&gt;
+&lt;h3&gt;Web Api Wrapper&lt;/h3&gt;
+&lt;p&gt;Web Api controllerında yer alan api fonksiyonlarına (actions) hızlıca erişmek için kullanılan yardımcı nesnedir. Daha detaylı bilgi için ApiHelper başlığına göz atın.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;api: ApiHelper;&lt;/code&gt;&lt;/pre&gt;
+&lt;h3&gt;Dil ve Kültür&lt;/h3&gt;
+&lt;p&gt;Web Api controllerında yer alan Api fonksiyonlarına (Actions) hızlıca erişmek için kullanılan yardımcı nesnedir. Daha detaylı bilgi için BaseCulture başlığına göz atın.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;culture: BaseCulture;&lt;/code&gt;&lt;/pre&gt;
+&lt;h3&gt;Lookup ve Element Erişimcileri&lt;/h3&gt;
+&lt;p&gt;View içerisinde kodla veya html içerisindeki tanımlamalarla lookupları (select/dropdown) oluşturabilirsiniz. Oluşturulan her bir Look nesnesi &lt;code&gt;controlRefs&lt;/code&gt; dizisine eklenir. Daha detaylı bilgi için UIKit ve UIKitSelectRef başlıklarına göz atın.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;controlRefs: UIKitSelectRef[];&lt;/code&gt;&lt;/pre&gt;
+
