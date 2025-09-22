@@ -53,27 +53,4 @@ Mesaj nesnesini barındıran listedir ve içerisinde yer alan Message nesnesinin
   
 Create **JSON Request Modeli**
 
-&#123;
-	"AuthTicket": "GUNVELIK\_ANAHTARINIZ",
-	"Culture": "tr-TR",
-	"AppSource": "16573",
-	"AppPlatform": "1",
-	"Entity": &#123;
-		"Customer": &#123;
-			"Code": "SUBE KODU"
-		&#125;,
-		"CustomerTicketNo": "TEST-999",
-		"CustomerTicketUser": "Kemal Kavruk, Tel:599xyzxyzt",
-		"CallingDate": "2025-02-13 13:00:00",
-		"SubCallType": &#123;
-			"Id": "647"
-		&#125;,
-		"Description": "ŞUBEDEN GELEN ARIZA BİLDİRİMİNE AİT DETAYLI AÇIKLAMA METNİ",
-		"ProductSerialNumber": "DAI0002.RAD0001",
-		"LookupLevel1Value": "DAI0002",
-		"LookupLevel1Text": "ISITICI (DOĞALGAZ RADYANT)",
-		"Priority": "0",
-		"ProductBrandName": "marka",
-		"ProductModelName": "model"
-	&#125;
-&#125;
+\`\`\`json { "AuthTicket": "GUNVELIK\_ANAHTARINIZ", "Culture": "tr-TR", "AppSource": "16573", "AppPlatform": "1", "Entity": { "Customer": { "Code": "SUBE KODU" }, "CustomerTicketNo": "TEST-999", "CustomerTicketUser": "Kemal Kavruk, Tel:599xyzxyzt", "CallingDate": "2025-02-13 13:00:00", "SubCallType": { "Id": "647" }, "Description": "ŞUBEDEN GELEN ARIZA BİLDİRİMİNE AİT DETAYLI AÇIKLAMA METNİ", "ProductSerialNumber": "DAI0002.RAD0001", "LookupLevel1Value": "DAI0002", "LookupLevel1Text": "ISITICI (DOĞALGAZ RADYANT)", "Priority": "0", "ProductBrandName": "marka", "ProductModelName": "model" } } \`\`\`

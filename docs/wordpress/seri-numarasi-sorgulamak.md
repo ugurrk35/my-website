@@ -6,35 +6,8 @@ Licrus Field Service uygulamasıyla devreye alınan cihazların seri numaraları
 
 **Fonksiyon**
 
-ProductSerialNumberResponse GetProductSerialNumbers(ProductSerialNumberRequest request)
+\`\`\`text ProductSerialNumberResponse GetProductSerialNumbers(ProductSerialNumberRequest request) \`\`\`
 
 **Örnek**
 
-// web service için istemci oluşturulyor
-var licrusService = new Integration();
-
-//istek nesnesi
-var request = new ProductSerialNumberRequest();
-
-// Login metoduyla alınmış ticket.
-request.AuthTicket = ticket;
-
-//istenilen seri numaraları için ilk çalıştırma tarihi.
-//Belirtilen tarih ve sonrasında devreye alınan cihazlar gelecektir.
-request.Filter = new BaseFilter();
-request.Filter.ReferenceDateTime = new DateTime(2020, 12, 01);
-
-//ödeme işlemi yapılıyor
-var response = svc.GetProductSerialNumbers(request);
-
-// Herhangi bir hata varsa
-if (response.HasError) &#123;
-    // Detaylar için (bkz:Api Kullanım)
-&#125;
-else &#123;
-    // Arama kriterleriyle eşleşen tüm kayıtlar    
-    // response.Results alanı üzerinde yeralır.    
-    foreach (var item in response.Results) &#123;
-        // cihaz bilgileri
-    &#125;
-&#125;
+\`\`\`text // web service için istemci oluşturulyor var licrusService = new Integration(); //istek nesnesi var request = new ProductSerialNumberRequest(); // Login metoduyla alınmış ticket. request.AuthTicket = ticket; //istenilen seri numaraları için ilk çalıştırma tarihi. //Belirtilen tarih ve sonrasında devreye alınan cihazlar gelecektir. request.Filter = new BaseFilter(); request.Filter.ReferenceDateTime = new DateTime(2020, 12, 01); //ödeme işlemi yapılıyor var response = svc.GetProductSerialNumbers(request); // Herhangi bir hata varsa if (response.HasError) { // Detaylar için (bkz:Api Kullanım) } else { // Arama kriterleriyle eşleşen tüm kayıtlar // response.Results alanı üzerinde yeralır. foreach (var item in response.Results) { // cihaz bilgileri } } \`\`\`

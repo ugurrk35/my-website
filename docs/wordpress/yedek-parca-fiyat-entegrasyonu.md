@@ -10,7 +10,7 @@ Rapor entegrasyonu için kullanılacak bilgileri için LaborCostByQuote nesnesi 
 **Yeni Yedek Parça Fiyatı, Kaydetmek veya Güncellemek**  
 Aşağıdaki fonksiyonu kullanarak yeni bir yedek parça listesi Licrus’a aktarabilir.  
 
-PriceListResponse SavePriceList(PriceListRequest request)
+\`\`\`text PriceListResponse SavePriceList(PriceListRequest request) \`\`\`
 
 **Örnek**
 
@@ -38,36 +38,8 @@ Mesaj nesnesini barındıran listedir ve içerisinde yer alan Message nesnesinin
   
 **SavePriceList JSON Request Modeli**
 
-&#123;
-	"authticket": "demodemoedmodemo",
-	"entitypricelist": \[
-		&#123;
-			"Code":"r45u",
-			"circulartype": "3",
-			"price": "662.05 ",
-			"startdate": "2023-02-08T00:00:00",
-			"enddate": "2024-06-30T00:00:00",
-			"part": &#123;
-				"code": "102126797"
-			&#125;
-		&#125;,
-		&#123;
-			"Code":"r45u",
-			"circulartype": "3",
-			"price": "26.25 ",
-			"startdate": "2023-02-08T00:00:00",
-			"enddate": "2024-06-30T00:00:00",
-			"part": &#123;
-				"code": "102199479"
-			&#125;
-		&#125;
-	\]
-&#125;
+\`\`\`json { "authticket": "demodemoedmodemo", "entitypricelist": \[ { "Code": "r45u", "circulartype": "3", "price": "662.05 ", "startdate": "2023-02-08T00:00:00", "enddate": "2024-06-30T00:00:00", "part": { "code": "102126797" } }, { "Code": "r45u", "circulartype": "3", "price": "26.25 ", "startdate": "2023-02-08T00:00:00", "enddate": "2024-06-30T00:00:00", "part": { "code": "102199479" } } \] } \`\`\`
 
 **GetPart JSON Response Modeli**
 
-&#123;
-	"MessageList": \[\],
-	"HasError": false,
-	"HasMessage": false
-&#125;
+\`\`\`json { "MessageList": \[\], "HasError": false, "HasMessage": false } \`\`\`

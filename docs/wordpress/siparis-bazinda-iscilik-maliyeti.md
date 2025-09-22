@@ -8,29 +8,8 @@ Rapor entegrasyonu için kullanılacak bilgileri için LaborCostByQuote nesnesi 
 
 **Fonksiyon**
 
-LaborCostByQuoteResponse GetLaborCostByQuote(LaborCostByQuoteRequest request)
+\`\`\`text LaborCostByQuoteResponse GetLaborCostByQuote(LaborCostByQuoteRequest request) \`\`\`
 
 **Örnek**
 
-// web service için istemci oluşturulyor
-var licrusService = new Integration();
-
-//istek nesnesi
-var request = new LaborCostByQuoteRequest();
-
-// Login metoduyla alınmış ticket.
-request.AuthTicket = ticket;
-
-// detayları alınmak istenen hakedişin numarası
-request.ProgressPaymnetId = 1111;
-
-// web servis fonksiyonu çağrılıyor
-var response = licrusService.LaborCostByQuoteResponse(request);
-
-// Herhangi bir hata varsa
-if (response.HasError) &#123;
-    // Detaylar için (bkz:Api Kullanım)
-&#125;
-else &#123;
-    //işlem başarılı gerçekleşti.
-&#125;
+\`\`\`text // web service için istemci oluşturulyor var licrusService = new Integration(); //istek nesnesi var request = new LaborCostByQuoteRequest(); // Login metoduyla alınmış ticket. request.AuthTicket = ticket; // detayları alınmak istenen hakedişin numarası request.ProgressPaymnetId = 1111; // web servis fonksiyonu çağrılıyor var response = licrusService.LaborCostByQuoteResponse(request); // Herhangi bir hata varsa if (response.HasError) { // Detaylar için (bkz:Api Kullanım) } else { //işlem başarılı gerçekleşti. } \`\`\`

@@ -87,163 +87,17 @@ Mesaj nesnesini barındıran listedir ve içerisinde yer alan Message nesnesinin
 
 **SaveProduct JSON Request Modeli**
 
-&#123;
-	"authticket": "demodemodemodemodemo",
-	"entity": &#123;
-		"code": "TESTCOD8",
-		"name": "testtUrun8",
-		"manufacturercode": "001",
-		"productdetailgroupcode": "14064",
-		"description": "test ürün",
-		"isactive": true,
-		"brand": &#123;
-			"code": "masdaf"
-		&#125;,
-		"model": &#123;
-			"code": "1084"
-		&#125;,
-		"maingroup": &#123;
-			"code": "G0014"
-		&#125;,
-		"warrantyperiod": 3,
-		"serialnumbercount": 1,
-		"origin": 2,
-                "Kw": 1,
-		"StageCount": 2,
-		"Genio": 3,
-		"ElectricPumpCount": 1,
-		"DieselPumpCount": 2,
-		"PumpCount": 3,
-		"ConfigurationContent": "test"
-		"CreateMissingPart":true,
-		"SpareParts": \[
-			&#123;
-				"code": "11testm-3",
-				"description": "11testm-3",
-				"partgroupcode": "G004",
-				"isactive": true,
-				"name": "test999m-2",
-				"availabletoorder": true,
-				"ManufacturerCode": "001",
-				"isgivingback": false,
-				"allowuseinserviceform": true,
-				"minordercount": 5,
-				"minrequestquantity": 5,
-				"unitofmesurecode": "ADT"
-			&#125;,
-			&#123;
-				"code": "232test",
-				"description": "232test",
-				"mainpartgroupcode": "G005",
-				"partgroupcode": "5025",
-				"isactive": true,
-				"name": "test999m-2",
-				"availabletoorder": true,
-				"ManufacturerCode": "001",
-				"isgivingback": false,
-				"allowuseinserviceform": true,
-				"minordercount": 5,
-				"minrequestquantity": 5,
-				"unitofmesurecode": "ADT"
-			&#125;
-		\]
-	&#125;
-&#125;
+\`\`\`text { "authticket": "demodemodemodemodemo", "entity": { "code": "TESTCOD8", "name": "testtUrun8", "manufacturercode": "001", "productdetailgroupcode": "14064", "description": "test ürün", "isactive": true, "brand": { "code": "masdaf" }, "model": { "code": "1084" }, "maingroup": { "code": "G0014" }, "warrantyperiod": 3, "serialnumbercount": 1, "origin": 2, "Kw": 1, "StageCount": 2, "Genio": 3, "ElectricPumpCount": 1, "DieselPumpCount": 2, "PumpCount": 3, "ConfigurationContent": "test" "CreateMissingPart":true, "SpareParts": \[ { "code": "11testm-3", "description": "11testm-3", "partgroupcode": "G004", "isactive": true, "name": "test999m-2", "availabletoorder": true, "ManufacturerCode": "001", "isgivingback": false, "allowuseinserviceform": true, "minordercount": 5, "minrequestquantity": 5, "unitofmesurecode": "ADT" }, { "code": "232test", "description": "232test", "mainpartgroupcode": "G005", "partgroupcode": "5025", "isactive": true, "name": "test999m-2", "availabletoorder": true, "ManufacturerCode": "001", "isgivingback": false, "allowuseinserviceform": true, "minordercount": 5, "minrequestquantity": 5, "unitofmesurecode": "ADT" } \] } } \`\`\`
 
   
 **SaveProduct JSON response Modeli**
 
-&#123;
-	"Results": \[\],
-	"MessageList": \[
-		&#123;
-			"Type": 0,
-			"Message": "INT-PRD1001:TESTCOD8 Kodlu ürün aktif bir ürün olduğu için, Licrus ürün bilgileri güncellenmedi."
-		&#125;,
-		&#123;
-			"Type": 2,
-			"Message": "11testm-3 kodlu yedek parça kaydedildi."
-		&#125;,
-		&#123;
-			"Type": 2,
-			"Message": "TESTCOD8 ürününe 11testm-3 kodlu yedek parça eklendi."
-		&#125;,
-		&#123;
-			"Type": 2,
-			"Message": "232test kodlu yedek parça kaydedildi."
-		&#125;,
-		&#123;
-			"Type": 2,
-			"Message": "TESTCOD8 ürününe 232test kodlu yedek parça eklendi."
-		&#125;
-	\],
-	"HasError": true,
-	"HasMessage": true
-&#125;
+\`\`\`json { "Results": \[\], "MessageList": \[ { "Type": 0, "Message": "INT-PRD1001:TESTCOD8 Kodlu ürün aktif bir ürün olduğu için, Licrus ürün bilgileri güncellenmedi." }, { "Type": 2, "Message": "11testm-3 kodlu yedek parça kaydedildi." }, { "Type": 2, "Message": "TESTCOD8 ürününe 11testm-3 kodlu yedek parça eklendi." }, { "Type": 2, "Message": "232test kodlu yedek parça kaydedildi." }, { "Type": 2, "Message": "TESTCOD8 ürününe 232test kodlu yedek parça eklendi." } \], "HasError": true, "HasMessage": true } \`\`\`
 
 **GetProduct JSON Request Modeli**
 
-&#123;
-  "AuthTicket": "demodemodemodemodemodemodemodemo",
-  "Filter": &#123;
-    "Code": "PRODUCT-001"
-  &#125;
-&#125;
+\`\`\`json { "AuthTicket": "demodemodemodemodemodemodemodemo", "Filter": { "Code": "PRODUCT-001" } } \`\`\`
 
  **GetProduct** **Response Modeli**
 
-&#123;
-	"Results": \[
-		&#123;
-			"Code": "PRODUCT-001",
-			"Name": "demo ürün",
-			"MainGroup": &#123;
-				"Code": "A.B1",
-				"Name": "YOĞUŞMALI KOMBİ",
-				"IsMainGroup": false,
-				"UseInQuote": false,
-				"ParentGroup": null,
-				"CssStyle": null,
-				"CssClass": null,
-				"PreviewImageUrl": null,
-				"DisplayOrder": null,
-				"SubGroups": null,
-				"IsTrackVersion": false,
-				"Id": 0,
-				"IsActive": false,
-				"Text": null
-			&#125;,
-			"Point": 0.0,
-			"Brand": &#123;
-				"Code": "Marka",
-				"Name": "Marka",
-				"Id": 0,
-				"IsActive": false,
-				"Text": null
-			&#125;,
-			"Model": &#123;
-				"Code": "8406450010",
-				"Name": "Demo",
-				"Id": 0,
-				"IsActive": false,
-				"Text": null
-			&#125;,
-			"Manufacturer": null,
-			"Price": 0.0,
-			"Currency": null,
-			"PreviewImage": null,
-			"Description": "demo ürün bilgisi",
-			"Images": null,
-			"WarrantyPeriod": 3,
-			"SerialNumberCount": 1,
-			"Width": 0.0,
-			"Height": 0.0,
-			"Id": 0,
-			"IsActive": false,
-			"Text": null
-		&#125;
-	\],
-	"MessageList": \[\],
-	"HasError": false,
-	"HasMessage": false
-&#125;
+\`\`\`json { "Results": \[ { "Code": "PRODUCT-001", "Name": "demo ürün", "MainGroup": { "Code": "A.B1", "Name": "YOĞUŞMALI KOMBİ", "IsMainGroup": false, "UseInQuote": false, "ParentGroup": null, "CssStyle": null, "CssClass": null, "PreviewImageUrl": null, "DisplayOrder": null, "SubGroups": null, "IsTrackVersion": false, "Id": 0, "IsActive": false, "Text": null }, "Point": 0, "Brand": { "Code": "Marka", "Name": "Marka", "Id": 0, "IsActive": false, "Text": null }, "Model": { "Code": "8406450010", "Name": "Demo", "Id": 0, "IsActive": false, "Text": null }, "Manufacturer": null, "Price": 0, "Currency": null, "PreviewImage": null, "Description": "demo ürün bilgisi", "Images": null, "WarrantyPeriod": 3, "SerialNumberCount": 1, "Width": 0, "Height": 0, "Id": 0, "IsActive": false, "Text": null } \], "MessageList": \[\], "HasError": false, "HasMessage": false } \`\`\`

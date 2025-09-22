@@ -33,44 +33,8 @@ title: "Form Üzerinden Çağrı Başlatma"
 
 **Örnek Request Bilgisi**
 
-&#123;
-    "AuthTicket": "aa1c99300ccd452aa518a52aa565\*\*\*\*",
-    "DealerCompanyName": "Test Bayi",
-    "DealerContactPerson": "MUTLU ÖZCAN",
-    "DealerMobilePhone": "3546546757",
-    "DealerWorkPhone": "",
-    "DealerEmail": "dealeremail@dealer.com",
-    "CustomerCompanyName": "",
-    "CustomerFullName": "Deneme Müşteri",
-    "CustomerMobilePhone": "5301231212",
-    "CustomerWorkPhone": "",
-    "CustomerEmail": "customerEmail@customer.com",
-    "CustomerCity": "Istanbul",
-    "CustomerDistrict": "Umraniye",
-    "CustomerAddress": "Fatih Sultan Mehmet mahallesi",
-    "ProductNameList": "ECODENSE WT 65",
-    "ProductGroupName": "ECODENSE DUVAR- YER TİPİ KAZAN",
-    "ProductSerialNumberList": "99958,99959",
-    "DeviceCount": 2
-&#125;
+\`\`\`json { "AuthTicket": "aa1c99300ccd452aa518a52aa565\*\*\*\*", "DealerCompanyName": "Test Bayi", "DealerContactPerson": "MUTLU ÖZCAN", "DealerMobilePhone": "3546546757", "DealerWorkPhone": "", "DealerEmail": "dealeremail@dealer.com", "CustomerCompanyName": "", "CustomerFullName": "Deneme Müşteri", "CustomerMobilePhone": "5301231212", "CustomerWorkPhone": "", "CustomerEmail": "customerEmail@customer.com", "CustomerCity": "Istanbul", "CustomerDistrict": "Umraniye", "CustomerAddress": "Fatih Sultan Mehmet mahallesi", "ProductNameList": "ECODENSE WT 65", "ProductGroupName": "ECODENSE DUVAR- YER TİPİ KAZAN", "ProductSerialNumberList": "99958,99959", "DeviceCount": 2 } \`\`\`
 
 **Örnek Response Bilgisi**
 
-&#123;
-    "Results": \[\],
-    "Entity": null,
-    "HasResult": false,
-    "Count": 0,
-    "TotalCount": 0,
-    "Id": 0,
-    "Meta": null,
-    "MessageList": \[
-        &#123;
-            "Type": 2,
-            "Message": "Verdiğiniz bilgilere göre çağrı oluşturulmuştur. Çağrı numarası: 43090"
-        &#125;
-    \],
-    "HasError": false,
-    "HasMessage": true,
-    "RrpTag": null
-&#125;
+\`\`\`json { "Results": \[\], "Entity": null, "HasResult": false, "Count": 0, "TotalCount": 0, "Id": 0, "Meta": null, "MessageList": \[ { "Type": 2, "Message": "Verdiğiniz bilgilere göre çağrı oluşturulmuştur. Çağrı numarası: 43090" } \], "HasError": false, "HasMessage": true, "RrpTag": null } \`\`\`

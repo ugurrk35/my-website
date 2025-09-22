@@ -10,38 +10,11 @@ Aşağıdaki fonksiyonu kullanarak yeni bir yedek parçayı Licrus’a aktarabil
 
 **Fonksiyon**
 
-SparePartResponse SaveSparePart(SparePartRequest request)
+\`\`\`text SparePartResponse SaveSparePart(SparePartRequest request) \`\`\`
 
 **Örnek**
 
-// web service için istemci oluşturulyor
-var licrusService = new Integration();
-
-//istek nesnesi
-var request = new ProductRequest();
-
-// Login metoduyla alınmış ticket.
-request.AuthTicket = ticket;
-
-// kaydedilmek istenen yedek parça ve bilgileri.
-var card = new SparePart();
-// yedek parça kodu daha önce gönderilmiş bir kod ise güncelleme yapılır
-// diğer durumda yeni kayıt olarak eklenecektir
-card.Code = "PART-001";
-// yedek parça adı
-card.Name = "ABC01";
-// ... diğer bilgileri 
-
-// web servis fonksiyonu çağrılıyor
-var response = licrusService.SaveSparePart(request);
-
-// Herhangi bir hata varsa
-if (response.HasError) &#123;
-    // Detaylar için (bkz:Api Kullanım)
-&#125;
-else &#123;
-    //işlem başarılı gerçekleşti.
-&#125;
+\`\`\`text // web service için istemci oluşturulyor var licrusService = new Integration(); //istek nesnesi var request = new ProductRequest(); // Login metoduyla alınmış ticket. request.AuthTicket = ticket; // kaydedilmek istenen yedek parça ve bilgileri. var card = new SparePart(); // yedek parça kodu daha önce gönderilmiş bir kod ise güncelleme yapılır // diğer durumda yeni kayıt olarak eklenecektir card.Code = "PART-001"; // yedek parça adı card.Name = "ABC01"; // ... diğer bilgileri // web servis fonksiyonu çağrılıyor var response = licrusService.SaveSparePart(request); // Herhangi bir hata varsa if (response.HasError) { // Detaylar için (bkz:Api Kullanım) } else { //işlem başarılı gerçekleşti. } \`\`\`
 
   
 **Kayıtlı Yedek Parçaları Almak**  
@@ -49,38 +22,11 @@ Aşağıdaki fonksiyonu kullanarak daha önce Licrus’a kaydedilmiş yedek par�
 
 **Fonksiyon**
 
-SparePartResponse GetSparePart(SparePartRequest request)
+\`\`\`text SparePartResponse GetSparePart(SparePartRequest request) \`\`\`
 
 **Örnek**
 
-// web service için istemci oluşturulyor
-var licrusService = new Integration();
-
-//istek nesnesi
-var request = new ProductRequest();
-
-// Login metoduyla alınmış ticket.
-request.AuthTicket = ticket;
-
-// filtre nesnesi.
-request.Filter = new SparePartFilter();
-
-// alınmak istenen yedek parça kodu
-// boş bırakıldığında tüm yedek parçaları getirir.
-request.Filter.Code = "PART-001";
-
-var response = licrusService.GetSparePart(request);
-// Herhangi bir hata varsa
-if (response.HasError) &#123;
-    // Detaylar için (bkz:Api Kullanım)
-&#125;
-else &#123;
-    // Arama kriterleriyle eşleşen tüm kayıtlar    
-    // response.Results alanı üzerinde yeralır.    
-    foreach (var item in response.Results) &#123;
-        // yedek parça bilgileri
-    &#125;
-&#125;
+\`\`\`text // web service için istemci oluşturulyor var licrusService = new Integration(); //istek nesnesi var request = new ProductRequest(); // Login metoduyla alınmış ticket. request.AuthTicket = ticket; // filtre nesnesi. request.Filter = new SparePartFilter(); // alınmak istenen yedek parça kodu // boş bırakıldığında tüm yedek parçaları getirir. request.Filter.Code = "PART-001"; var response = licrusService.GetSparePart(request); // Herhangi bir hata varsa if (response.HasError) { // Detaylar için (bkz:Api Kullanım) } else { // Arama kriterleriyle eşleşen tüm kayıtlar // response.Results alanı üzerinde yeralır. foreach (var item in response.Results) { // yedek parça bilgileri } } \`\`\`
 
 **Servis Nesneleri**  
 
@@ -113,35 +59,11 @@ Mesaj nesnesini barındıran listedir ve içerisinde yer alan Message nesnesinin
 
 **GetPart JSON Request Modeli**
 
-&#123;
-	"AuthTicket": "demodemodemodemodemodemodemodemodemo",
-  "Filter": &#123;
-    "Code": "700699064576"
-  &#125;
-&#125;
+\`\`\`json { "AuthTicket": "demodemodemodemodemodemodemodemodemo", "Filter": { "Code": "700699064576" } } \`\`\`
 
 **GetPart JSON Response Modeli**
 
-&#123;
-	"Results": \[
-		&#123;
-			"Code": "Test1",
-			"Name": "Test yedek parça",
-			"Description": "test",
-			"CustomerPrice": 100.00,
-			"ServicePrice": 100.00,
-			"WarrantyPeriod": 0,
-			"Products": null,
-			"Labors": null,
-			"Id": 0,
-			"IsActive": true,
-			"Text": null
-		&#125;
-	\],
-	"MessageList": \[\],
-	"HasError": false,
-	"HasMessage": false
-&#125;
+\`\`\`json { "Results": \[ { "Code": "Test1", "Name": "Test yedek parça", "Description": "test", "CustomerPrice": 100, "ServicePrice": 100, "WarrantyPeriod": 0, "Products": null, "Labors": null, "Id": 0, "IsActive": true, "Text": null } \], "MessageList": \[\], "HasError": false, "HasMessage": false } \`\`\`
 
 **Yeni Yedek Parça Kaydetmek** 
 
@@ -177,191 +99,24 @@ Mesaj nesnesini barındıran listedir ve içerisinde yer alan Message nesnesinin
 
 **SavePart JSON Request Modeli**
 
-&#123;
-	"AuthTicket": "demodemodemodemodemodemo",
-  "Entity":&#123;
-	"Code": "RelationType6",
-  "Description": "RelationType6",
-  "IsActive": true,
-  "Name": "RelationType6",
-  "WarrantyPeriod": 12,
-  "ServicePrice": 330.0,
-  "CustomerPrice": 220.0,
-		"AvailableToOrder":true,
-		"IsGivingBack":true,
-	"AllowUseInServiceForm":true,
-  "Products": \[
-
-    &#123;
-      "Code": "8216368100"
-    &#125;,
-    &#123;
-      "Code": "8216376100"
-    &#125;
-
-  \],
-  "RelatedParts": \[
-	
-    &#123;
-		"Child":&#123;
-      "Code": "7006990002"
-    &#125;,
-		"RelationType":&#123;
-				"Code":"muadil"
-			&#125;,
-		"IsActive":1
-&#125;
- 
-  \],
-  "Labors": \[
-    &#123;
-      "Code": "36-40",
-      "IsActive": true,
-      "Quantity": 2
-    &#125;,
-    &#123;
-      "Code": "31-35",
-      "IsActive": false,
-      "Quantity": 1
-    &#125;
-
-  \]
-&#125;
-&#125;
+\`\`\`json { "AuthTicket": "demodemodemodemodemodemo", "Entity": { "Code": "RelationType6", "Description": "RelationType6", "IsActive": true, "Name": "RelationType6", "WarrantyPeriod": 12, "ServicePrice": 330, "CustomerPrice": 220, "AvailableToOrder": true, "IsGivingBack": true, "AllowUseInServiceForm": true, "Products": \[ { "Code": "8216368100" }, { "Code": "8216376100" } \], "RelatedParts": \[ { "Child": { "Code": "7006990002" }, "RelationType": { "Code": "muadil" }, "IsActive": 1 } \], "Labors": \[ { "Code": "36-40", "IsActive": true, "Quantity": 2 }, { "Code": "31-35", "IsActive": false, "Quantity": 1 } \] } } \`\`\`
 
   
   
 
 **Toplu olarak kaydetme veya güncelleme SavePart JSON Request Modeli**
 
-&#123;
-	"AuthTicket": "demodemodemodemodemodemo",
-	"EntityList": \[
-&#123;
-	"Code": "RelationType6",
-  "Description": "RelationType6",
-  "IsActive": true,
-  "Name": "RelationType6",
-  "WarrantyPeriod": 12,
-  "ServicePrice": 330.0,
-  "CustomerPrice": 220.0,
-		"AvailableToOrder":true,
-		"IsGivingBack":true,
-	"AllowUseInServiceForm":true,
-  "Products": \[
-
-    &#123;
-      "Code": "8216368100"
-    &#125;,
-    &#123;
-      "Code": "8216376100"
-    &#125;
-
-  \],
-  "RelatedParts": \[
-	
-    &#123;
-		"Child":&#123;
-      "Code": "7006990002"
-    &#125;,
-		"RelationType":&#123;
-				"Code":"muadil"
-			&#125;,
-		"IsActive":1
-&#125;
- 
-  \],
-  "Labors": \[
-    &#123;
-      "Code": "36-40",
-      "IsActive": true,
-      "Quantity": 2
-    &#125;,
-    &#123;
-      "Code": "31-35",
-      "IsActive": false,
-      "Quantity": 1
-    &#125;
-
-  \]
-
-&#125;,
-&#123;
-	"Code": "CODEPART",
-  "Description": "CODEPART",
-  "IsActive": true,
-  "Name": "NAMEPART",
-  "WarrantyPeriod": 12,
-  "ServicePrice": 330.0,
-  "CustomerPrice": 220.0,
-		"AvailableToOrder":true,
-		"IsGivingBack":true,
-	"AllowUseInServiceForm":true,
-  "Products": \[
-
-    &#123;
-      "Code": "8216368100"
-    &#125;,
-    &#123;
-      "Code": "8216376100"
-    &#125;
-
-  \],
-  "RelatedParts": \[
-	
-    &#123;
-		"Child":&#123;
-      "Code": "7006990002"
-    &#125;,
-		"RelationType":&#123;
-				"Code":"muadil"
-			&#125;,
-		"IsActive":1
-&#125;
- 
-  \],
-  "Labors": \[
-    &#123;
-      "Code": "36-40",
-      "IsActive": true,
-      "Quantity": 2
-    &#125;,
-    &#123;
-      "Code": "31-35",
-      "IsActive": false,
-      "Quantity": 1
-    &#125;
-
-  \]
-
-&#125;
-\]
-&#125;
+\`\`\`json { "AuthTicket": "demodemodemodemodemodemo", "EntityList": \[ { "Code": "RelationType6", "Description": "RelationType6", "IsActive": true, "Name": "RelationType6", "WarrantyPeriod": 12, "ServicePrice": 330, "CustomerPrice": 220, "AvailableToOrder": true, "IsGivingBack": true, "AllowUseInServiceForm": true, "Products": \[ { "Code": "8216368100" }, { "Code": "8216376100" } \], "RelatedParts": \[ { "Child": { "Code": "7006990002" }, "RelationType": { "Code": "muadil" }, "IsActive": 1 } \], "Labors": \[ { "Code": "36-40", "IsActive": true, "Quantity": 2 }, { "Code": "31-35", "IsActive": false, "Quantity": 1 } \] }, { "Code": "CODEPART", "Description": "CODEPART", "IsActive": true, "Name": "NAMEPART", "WarrantyPeriod": 12, "ServicePrice": 330, "CustomerPrice": 220, "AvailableToOrder": true, "IsGivingBack": true, "AllowUseInServiceForm": true, "Products": \[ { "Code": "8216368100" }, { "Code": "8216376100" } \], "RelatedParts": \[ { "Child": { "Code": "7006990002" }, "RelationType": { "Code": "muadil" }, "IsActive": 1 } \], "Labors": \[ { "Code": "36-40", "IsActive": true, "Quantity": 2 }, { "Code": "31-35", "IsActive": false, "Quantity": 1 } \] } \] } \`\`\`
 
 **SavePart JSON Response Modeli**
 
-&#123;
-	"Results": \[\],
-	"MessageList": \[\],
-	"HasError": false,
-	"HasMessage": false
-&#125;
+\`\`\`json { "Results": \[\], "MessageList": \[\], "HasError": false, "HasMessage": false } \`\`\`
 
 **Örnek hata response**
 
 ürün kodu hatalı verildiği durumda
 
-&#123;
-	"Results": \[\],
-	"MessageList": \[
-		&#123;
-			"Type": 0,
-			"Message": "345 Koduyla eşleşen bir ürün tanımı bulunamadı"
-		&#125;
-	\],
-	"HasError": true,
-	"HasMessage": true
-&#125;
+\`\`\`json { "Results": \[\], "MessageList": \[ { "Type": 0, "Message": "345 Koduyla eşleşen bir ürün tanımı bulunamadı" } \], "HasError": true, "HasMessage": true } \`\`\`
 
 **  
 Yedek Parça Güncellemek**  
@@ -395,64 +150,9 @@ Güncelleme işleminde Yedek parça Koduna göre işlem yapm aktadır.Bu alan e�
 **Update işlemi için**  
 **SavePart JSON Request Modeli**
 
-&#123;
-	"AuthTicket": "demodemodemodemodemodemo",
-  "Entity":&#123;
-	"Code": "RelationType6",
-  "Description": "RelationType6",
-  "IsActive": true,
-  "Name": "RelationType6",
-  "WarrantyPeriod": 12,
-  "ServicePrice": 330.0,
-  "CustomerPrice": 220.0,
-		"AvailableToOrder":true,
-		"IsGivingBack":true,
-	"AllowUseInServiceForm":true,
-  "Products": \[
-
-    &#123;
-      "Code": "8216368100"
-    &#125;,
-    &#123;
-      "Code": "8216376100"
-    &#125;
-
-  \],
-  "RelatedParts": \[
-	
-    &#123;
-		"Child":&#123;
-      "Code": "7006990002"
-    &#125;,
-		"RelationType":&#123;
-				"Code":"muadil"
-			&#125;,
-		"IsActive":1
-&#125;
- 
-  \],
-  "Labors": \[
-    &#123;
-      "Code": "36-40",
-      "IsActive": true,
-      "Quantity": 2
-    &#125;,
-    &#123;
-      "Code": "31-35",
-      "IsActive": false,
-      "Quantity": 1
-    &#125;
-
-  \]
-&#125;
-&#125;
+\`\`\`json { "AuthTicket": "demodemodemodemodemodemo", "Entity": { "Code": "RelationType6", "Description": "RelationType6", "IsActive": true, "Name": "RelationType6", "WarrantyPeriod": 12, "ServicePrice": 330, "CustomerPrice": 220, "AvailableToOrder": true, "IsGivingBack": true, "AllowUseInServiceForm": true, "Products": \[ { "Code": "8216368100" }, { "Code": "8216376100" } \], "RelatedParts": \[ { "Child": { "Code": "7006990002" }, "RelationType": { "Code": "muadil" }, "IsActive": 1 } \], "Labors": \[ { "Code": "36-40", "IsActive": true, "Quantity": 2 }, { "Code": "31-35", "IsActive": false, "Quantity": 1 } \] } } \`\`\`
 
 **Update işlemi için**  
 **SavePart JSON Reponse Modeli**
 
-&#123;
-	"Results": \[\],
-	"MessageList": \[\],
-	"HasError": false,
-	"HasMessage": false
-&#125;
+\`\`\`json { "Results": \[\], "MessageList": \[\], "HasError": false, "HasMessage": false } \`\`\`

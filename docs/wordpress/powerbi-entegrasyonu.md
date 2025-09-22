@@ -17,8 +17,8 @@ Servis üzerinden yayınlanan tüm metotlar, Request nesnesi alır ve Response n
 | AuthTicket | Kimlik doğrulaması için kullanılacak ticket | (Zorunlu) |
 | AppSource | Uygulama kaynağı | 66292 (Zorunlu) |
 | AppCulture/ Culture | Dil ve kültür bilgisi | TR (Zorunlu) |
-| FreeEntity | Özgür varlık bilgisiVerilen guid e göre kurumsal yada bireysel günlük çağrı sayısını verir. | Bireysel &#123;“Guid”: “ed604414-5f97-d0ee-ff31-c5a3f507f74b”&#125;Kurumsal&#123;“Guid”: “79d8c475-6366-58e6-0b8d-1f96d9f1a739”&#125;(Zorunlu) |
-| Filter | Filtreleme bilgileritarih aralığı bilgisi verilerek filtreleme işlemi yapılıyor | &#123;“DynamicFilters”: [&#123;“Name”: “CallDate”, “Value”: &#123;“Start”: “2025-03-13T00:00:00.000Z”, “End”: “2025-03-14T00:00:00.000Z”, “Range”: “1”, “Text”: “Tarih Aralığı”, “Name”: “Tarih Aralığı”&#125;&#125;]&#125; |
+| FreeEntity | Özgür varlık bilgisiVerilen guid e göre kurumsal yada bireysel günlük çağrı sayısını verir. | Bireysel {“Guid”: “ed604414-5f97-d0ee-ff31-c5a3f507f74b”}Kurumsal{“Guid”: “79d8c475-6366-58e6-0b8d-1f96d9f1a739”}(Zorunlu) |
+| Filter | Filtreleme bilgileritarih aralığı bilgisi verilerek filtreleme işlemi yapılıyor | {“DynamicFilters”: [{“Name”: “CallDate”, “Value”: {“Start”: “2025-03-13T00:00:00.000Z”, “End”: “2025-03-14T00:00:00.000Z”, “Range”: “1”, “Text”: “Tarih Aralığı”, “Name”: “Tarih Aralığı”}}]} |
 
 **Response (Cevap)**
 
@@ -40,54 +40,9 @@ Rapordan dönen nesneyi barındıran listedir ve içerisinde yer alan Message ne
   
 **PowerBI JSON Request Modeli**
 
-&#123;
-	"FreeEntity": &#123;
-		"Guid": "ed604414-5f97-d0ee-ff31-c5a3f507f74b"
-	&#125;,
-	"Filter": &#123;
-		"DynamicFilters": \[
-			&#123;
-				"Name": "CallDate",
-				"Value": &#123;
-					"Start": "2025-04-13T00:00:00.000Z",
-					"End": "2025-03-14T00:00:00.000Z",
-					"Range": "1",
-					
-				&#125;
-			&#125;
-		\]
-	&#125;,
-	
-	"Culture": "TR",
-	"AuthTicket": "demodemodemodemodemo"
-&#125;
+\`\`\`text { "FreeEntity": { "Guid": "ed604414-5f97-d0ee-ff31-c5a3f507f74b" }, "Filter": { "DynamicFilters": \[ { "Name": "CallDate", "Value": { "Start": "2025-04-13T00:00:00.000Z", "End": "2025-03-14T00:00:00.000Z", "Range": "1", } } \] }, "Culture": "TR", "AuthTicket": "demodemodemodemodemo" } \`\`\`
 
   
 **Ürün Grubu Response Modeli**
 
-&#123;
-	"Results": \[
-		&#123;
-			"Çağrı Tarihi": "2025-03-13",
-			"Şehir": "TEKİRDAĞ",
-			"Çağrı tipi": "\*ŞİKAYETLER",
-			"Çağrı Konusu": "CİHAZ VEYA ÜRÜNDEN FAYDALANAMAMA",
-			"Bölge Adı": "",
-			"Çağrı sayısı": "1"
-		&#125;,
-		&#123;
-			"Çağrı Tarihi": "2025-03-13",
-			"Şehir": "KARAMAN",
-			"Çağrı tipi": "\*SERVİS TALEBİ",
-			"Çağrı Konusu": "İlk Çalıştırma",
-			"Bölge Adı": "02-ANKARA",
-			"Çağrı sayısı": "8"
-			&#125;
-	\],
-	"Summary": null,
-	"HasResult": true,
-	"MessageList": \[\],
-	"HasError": false,
-	"HasMessage": false,
-	"RrpTag": null
-&#125;
+\`\`\`json { "Results": \[ { "Çağrı Tarihi": "2025-03-13", "Şehir": "TEKİRDAĞ", "Çağrı tipi": "\*ŞİKAYETLER", "Çağrı Konusu": "CİHAZ VEYA ÜRÜNDEN FAYDALANAMAMA", "Bölge Adı": "", "Çağrı sayısı": "1" }, { "Çağrı Tarihi": "2025-03-13", "Şehir": "KARAMAN", "Çağrı tipi": "\*SERVİS TALEBİ", "Çağrı Konusu": "İlk Çalıştırma", "Bölge Adı": "02-ANKARA", "Çağrı sayısı": "8" } \], "Summary": null, "HasResult": true, "MessageList": \[\], "HasError": false, "HasMessage": false, "RrpTag": null } \`\`\`

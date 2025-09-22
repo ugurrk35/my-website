@@ -12,41 +12,8 @@ Müşterilerden alınan kredi kartı veya banka kartı bilgileri IVR kanalı üz
 
 **Fonksiyon**
 
-PaymentResponse Paymnet(PaymnetRequest request)
+\`\`\`text PaymentResponse Paymnet(PaymnetRequest request) \`\`\`
 
 **Örnek**
 
-// web service için istemci oluşturulyor
-var licrusService = new Integration();
-
-//istek nesnesi
-var request = new PaymentRequest();
-
-// Login metoduyla alınmış ticket.
-request.AuthTicket = ticket;
-
-//ödeme işleminin yapılacağı kredi/banka kartı nesnesi
-var card = new PaymentCard();
-card.CardHolderName = "SAMPLE CUSTOMER";
-card.Number = "1234-1234-1234-1234";
-card.ExpireYear = 07;
-card.ExpireMonth = 2020;
-card.SecurityCode = "123";
-card.CardVendor = PaymentCardVendor.Unknow;
-
-//kart bilgisi ödeme istek nesnesine setleniyor.
-request.Card = card;
-
-//ödeme işlemi için Licrus tarafından verilen Ödeme Talep Kodu.
-request.PaymentRequestCode = "ec38e9381d1440f0a3bb83ab47c37e11";
-
-//ödeme işlemi yapılıyor
-var response = svc.Payment(request);
-
-// Herhangi bir hata varsa
-if (response.HasError) &#123;
-    // Detaylar için (bkz:Api Kullanım)
-&#125;
-else &#123;
-    //işlem başarılı gerçekleşti.
-&#125;
+\`\`\`text // web service için istemci oluşturulyor var licrusService = new Integration(); //istek nesnesi var request = new PaymentRequest(); // Login metoduyla alınmış ticket. request.AuthTicket = ticket; //ödeme işleminin yapılacağı kredi/banka kartı nesnesi var card = new PaymentCard(); card.CardHolderName = "SAMPLE CUSTOMER"; card.Number = "1234-1234-1234-1234"; card.ExpireYear = 07; card.ExpireMonth = 2020; card.SecurityCode = "123"; card.CardVendor = PaymentCardVendor.Unknow; //kart bilgisi ödeme istek nesnesine setleniyor. request.Card = card; //ödeme işlemi için Licrus tarafından verilen Ödeme Talep Kodu. request.PaymentRequestCode = "ec38e9381d1440f0a3bb83ab47c37e11"; //ödeme işlemi yapılıyor var response = svc.Payment(request); // Herhangi bir hata varsa if (response.HasError) { // Detaylar için (bkz:Api Kullanım) } else { //işlem başarılı gerçekleşti. } \`\`\`

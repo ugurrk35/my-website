@@ -4,7 +4,8 @@
   "private": true,
   "scripts": {
     "docusaurus": "docusaurus",
-    "start": "serve -s build -l $PORT",
+    "start": "docusaurus start",
+   
     "build": "docusaurus build",
     "swizzle": "docusaurus swizzle",
     "deploy": "docusaurus deploy",
@@ -24,8 +25,7 @@
     "prism-react-renderer": "^2.3.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
-    "serve": "^14.2.5",
-    "turndown": "^7.2.1"
+    "serve": "^14.2.5"
   },
   "devDependencies": {
     "@docusaurus/module-type-aliases": "3.8.1",
