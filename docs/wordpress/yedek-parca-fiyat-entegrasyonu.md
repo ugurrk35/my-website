@@ -35,7 +35,8 @@ Mesaj nesnesini barındıran listedir ve içerisinde yer alan Message nesnesinin
 
 ## SavePriceList JSON Request Modeli
 ```json
-{"authticket": "demodemoedmodemo",
+{
+    "authticket": "demodemoedmodemo",
 	"entitypricelist": [
 		{
 	"Code":"r45u",
@@ -56,7 +57,7 @@ Mesaj nesnesini barındıran listedir ve içerisinde yer alan Message nesnesinin
 	"part":{
 	"code": "102199479"
 }
-}\
+}
 	]
 }
 ```
@@ -64,9 +65,8 @@ Mesaj nesnesini barındıran listedir ve içerisinde yer alan Message nesnesinin
 ## GetPart JSON Response Modeli
 
 ```json
-{"MessageList": [
-		\
-	],
+{
+    "MessageList": [],
 	"HasError": false,
 	"HasMessage": false
 }
